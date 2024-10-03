@@ -297,7 +297,21 @@ function editOrder() {
 displayOrder();
 
 
-//function for annimation on about us
+document.querySelector('.menu-btn').addEventListener('click', function () {
+    const sliderBox = this.querySelector('.slider-box');
+    sliderBox.style.display = sliderBox.style.display === 'block' ? 'none' : 'block';
+});
+const menuBtn = document.getElementById('menu-btn');
+const navbar = document.querySelector('.navbar');
+
+menuBtn.addEventListener('click', () => {
+    navbar.classList.toggle('active');
+});  
+  
+  
+  
+  
+//function for animation on about us
 document.addEventListener('DOMContentLoaded', function() {
     const aboutSection = document.querySelector('.about');
     
@@ -313,4 +327,3 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', checkScroll);
     checkScroll(); 
 });
-
