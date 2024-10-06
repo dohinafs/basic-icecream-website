@@ -1209,6 +1209,54 @@ input[type="radio"] {
     transform: translateX(0);
 }
 
+.cta {
+    opacity: 0;
+    animation: fade-in 2s forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fade-in {
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.slide-in {
+    transform: translateX(-100%);
+    animation: slideIn 2s forwards;
+    animation-delay: 1s;
+}
+
+@keyframes slideIn {
+    to {
+        transform: translateX(0);
+    }
+}
+
+.scale-up {
+    transform: scale(0.5);
+    animation: scaleUp 2s forwards;
+    animation-delay: 1s;
+}
+
+@keyframes scaleUp {
+    to {
+        transform: scale(1);
+    }
+}
+
 /* Contact Form Styles */
 /* Ensure full height for the main content */
 html, body {
@@ -1303,183 +1351,33 @@ body {
     border-radius: 10px;
     transform: scale(0.9);
     border: 2px solid white;
-    box-shadow: rgba(236, 234, 234, 0.25) 0px 50px 100px -20px, rgba(160, 158, 158, 0.3) 0px 30px 60px -30px, rgba(188, 188, 188, 0.35) 0px -2px 6px 0px inset;
+.navbar {
+  box-shadow: rgba(236, 234, 234, 0.25) 0px 50px 100px -20px, rgba(160, 158, 158, 0.3) 0px 30px 60px -30px, rgba(188, 188, 188, 0.35) 0px -2px 6px 0px inset;
 }
-.navbar a{
-    transition: all 0.2s ease-in;
+
+.navbar a {
+  transition: all 0.2s ease-in;
 }
-.navbar a:hover{
+
+.navbar a:hover {
   transform: scale(1.1);
 }
-.review-box{
-    display: flex;
-    justify-content: center;
-    gap: 20px;
 
-}
-.box1{
-   
-    border: 1px solid #d3ad7f;
-    border-radius: 10px;
-    height: 200px;
-    width: 30%;
-    align-items: center;
-    text-align: center;
-    color: #d3ad7f;
-    font-size: 15px;
-    padding: 20px 20px;
-    transition: all 0.5s ease-in-out;
-}
-.box1:hover{
-     transform: scale(1.1);
-     border-color: #eee;
+.box1 {
+  border: 1px solid #d3ad7f;
+  border-radius: 10px;
+  height: 200px;
+  width: 30%;
+  align-items: center;
+  text-align: center;
+  color: #d3ad7f;
+  font-size: 15px;
+  padding: 20px 20px;
+  transition: all 0.5s ease-in-out;
 }
 
-
-/* Dark mode */
-
-/* Default light mode colors */
-:root {
-    --background-color: rgb(240, 234, 234);
-    --text-color: black;
-    --header-bg: lightgray;
-  }
-  
-  h2{
-    color: var(--text-color);
-  }
-  /* Dark mode colors */
-  [data-theme="dark"] {
-    --background-color: #121212;
-    --text-color: #f1f1f1;
-    --header-bg: #1c1c1c;
-  }
-  
-  body {
-    background-color: var(--background-color);
-    color: var(--text-color);
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  
-  header {
-    background-color: var(--header-bg);
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  h1 {
-    margin: 0;
-  }
-  
-  .theme-switch-wrapper {
-    display: flex;
-    align-items: center;
-  }
-  
-  #mode-label {
-    margin-left: 10px;
-    font-size: 1rem;
-  }
-  
-  /* Toggle Switch */
-  .theme-switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 24px;
-  }
-  
-  .theme-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: 0.4s;
-    border-radius: 24px;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 18px;
-    width: 18px;
-    border-radius: 50%;
-    background-color: white;
-    transition: 0.4s;
-    top: 3px;
-    left: 4px;
-  }
-  
-  input:checked + .slider {
-    background-color: #66bb6a;
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(26px);
-  }
-  
-  /*---------------------*/
-  
-
-  /* tooltip */
-
-
-  .notification-tooltip {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #d4af37;
-    color: #ffffff;
-    padding: 15px 30px;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    display: none;
-    opacity: 0;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    z-index: 1000;
-    font-size: 18px;
-    text-align: center;
+.box1:hover {
+  transform: scale(1.1);
+  border-color: #eee;
 }
-
-.notification-tooltip.show {
-    display: block;
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.1);
-    animation: bounce 0.5s;
-}
-
-.tooltip-icon {
-    display: inline-block;
-    font-size: 24px;
-    margin-right: 10px;
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translate(-50%, -50%) scale(1);
-    }
-    40% {
-        transform: translate(-50%, -50%) scale(1.1);
-    }
-    60% {
-        transform: translate(-50%, -50%) scale(1.05);
-    }
-}
-
-
-  /*---------------------*/
+  
