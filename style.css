@@ -1023,9 +1023,9 @@ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2),
 
 .blogs .heading {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 4rem;
     margin-bottom: 2rem;
-    color: #ffbe0b; /* Brighter heading color */
+    color: black; /* Brighter heading color */
 }
 
 .blog-container {
@@ -1219,6 +1219,7 @@ button,
 .order-actions button {
     /* ... existing styles ... */
     transition: background-color 0.3s ease, color 0.3s ease, letter-spacing 0.3s ease;
+    color: black;
 }
 
 .btn:hover,
@@ -1293,14 +1294,28 @@ button:hover,
 
 .heading {
     text-align: center;
-    font-size: 2.5em;
-    color: var(--main-color);
+    font-size: 4rem;
+    text-decoration: underline;
+    color: black;
     margin-bottom: 30px;
     text-transform: uppercase;
 }
 
+.dark-mode #heading{
+    color: white;
+}
+
 .heading span {
-    color: #fff;
+    color: black;
+    font-size: 4rem;
+}
+
+.dark-mode #heading1{
+    color: white;
+}
+
+.dark-mode #heading2{
+    color: white;
 }
 
 #order-items,
