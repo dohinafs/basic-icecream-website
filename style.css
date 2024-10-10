@@ -54,22 +54,31 @@ body {
 }
 
 section {
-  padding: 2rem 7%;
+    padding: 2rem 7%;
+    opacity: 0; /* Initially hidden for animation */
+    transform: translateY(10px); /* Start slightly lower */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Smooth transition */
+}
+
+section.visible {
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Move to original position */
 }
 
 .btn {
-  margin-top: 1rem;
-  display: inline-block;
-  padding: 0.7rem 1.4rem;
-  font-size: 1.4rem;
-  font-weight: bold;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  color: var(--text-color);
-  background-color: var(--background-color);
-  cursor: pointer;
-  border-radius: 0.5rem;
-  /*transition: transform 0.3s ease;*/
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 0.9rem 3rem; /* Original padding retained */
+    font-size: 1.7rem; /* Original font size retained */
+    font-weight: bold; /* Added bold style */
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif; /* Font family included */
+    color: var(--text-color); /* Use text color variable */
+    background-color: var(--main-color); /* Maintain background color */
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Retain transition effect */
 }
+
 
 button {
   margin-top: 1rem;
@@ -89,27 +98,28 @@ button {
 }
 
 .btn:hover {
-  transform: scale(1.009);
+    background-color: #ff7a00; /* darker orange on hover */
+    box-shadow: 0 4px 20px rgba(255, 122, 0, 0.5); /* Added shadow on hover */
+    transform: scale(1.05) rotate(2deg); /* Added rotation effect */
 }
 
 button:hover {
-  transform: scale(1.009);
-  color: #ac8350;
+    transform: scale(1.009); /* Adjusted scaling effect */
 }
 
 .animated-button {
-  position: relative;
-  padding: 10px 20px;
-  font-size: 16px;
-  color: var(--text-color);
-  background-color: #d4af37;
-  border: none;
-  border-radius: 5px;
-  outline: none;
-  cursor: pointer;
-  overflow: hidden;
-  transition: color 0.8s;
-  z-index: 1;
+    position: relative;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: var(--text-color); /* Use text color variable */
+    background-color: #d4af37; 
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.8s, background-color 0.3s ease; /* Combined transitions */
+    z-index: 1;
 }
 
 .animated-button::before {
@@ -146,31 +156,34 @@ button:hover {
 }
 
 .animated-button span {
-  position: relative;
-  z-index: 1;
-  display: inline-block;
-  transition: color 0.8s;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    transition: color 0.8s, transform 0.2s; /* Combined transform transition */
 }
 
 .animated-button:hover span {
-  color: var(--text-color);
+    color: var(--main-color); /* Using main color on hover */
+    transform: scale(1.1); /* Scale effect on hover */
 }
+
 
 /*wishlist styles */
 
 .wishlist-container {
-  position: absolute;
-  top: calc(100% + 1rem);
-  right: 7%;
-  width: 400px;
-  background-color: var(--background-color, #00000045);
-
-  padding: 2rem;
-  display: none;
-  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
-  z-index: 100;
-  border-radius: 25px;
+    position: absolute;
+    top: calc(100% + 1rem);
+    right: 7%;
+    width: 400px;
+    background: var(--background-color, var(--black)); /* Fallback to var(--black) */
+    padding: 2rem;
+    display: none;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    border-radius: 25px; /* Added border-radius for rounded corners */
+    transition: all 0.3s ease; /* Smooth appearance */
 }
+
 
 .wishlist-container.active {
   display: block;
@@ -188,40 +201,54 @@ button:hover {
 }
 
 #wishlistItems li {
-  color: var(--main-color);
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    color: var(--main-color); /* Using the variable for color */
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s; /* Transition for background color */
+}
+
+#wishlistItems li:hover {
+    background-color: rgba(211, 173, 127, 0.1); /* Subtle background color change on hover */
 }
 
 .add-to-cart-btn {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  margin-right: 10px;
-  cursor: pointer;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
 }
+
 .add-to-cart-btn:hover {
-  background-color: #388d3b;
-  color: white;
+    background-color: #388d3b;
+    color: white;
 }
+
 .remove-from-wishlist-btn {
-  background-color: #f44336;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
 }
+
 .remove-from-wishlist-btn:hover {
-  background-color: #aa2f26;
-  color: white;
+    background-color: #aa2f26;
+    color: white;
 }
+
 .clear-from-wishlist-btn {
-  background-color: #c49f6a;
+    background-color: #c49f6a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
 }
+
 .wishlist-container button {
   width: 100%;
   margin-top: 1.5rem;
@@ -234,10 +261,16 @@ button:hover {
 }
 
 .wishlist .box-container .box {
-  padding: 3rem;
-  text-align: center;
-  border: var(--border);
+    padding: 3rem;
+    text-align: center;
+    border: var(--border);
+    transition: transform 0.3s ease; 
 }
+
+.wishlist .box-container .box img {
+    height: 20rem; /* Retained the height for the images */
+}
+
 
 .wishlist .box-container .box h3 {
   color: var(--text-color);
@@ -252,8 +285,11 @@ button:hover {
 }
 
 .wishlist .box-container .box:hover {
-  background-color: var(--background-color);
+    background: #fff; /* Use white background on hover */
+    background-color: var(--background-color); /* Retain the background-color variable */
+    transform: translateY(-5px); /* Lift effect on hover */
 }
+
 
 .wishlist .box-container .box:hover > * {
   color: var(--text-color);
@@ -276,22 +312,34 @@ button:hover {
 
 /* Header Styles */
 .header {
-  background-color: var(--background-color);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.5rem 7%;
-  border-bottom: var(--border);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
+.header {
+    background: var(--background-color); /* Using the variable for background color */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 7%;
+    border-bottom: var(--border);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease; /* Keep the transition */
+}
+
+.header:hover {
+    background-color: rgba(19, 19, 26, 0.8); /* Darken background on hover */
 }
 
 .header .logo img {
-  height: 6rem;
+    height: 6rem;
+    transition: transform 0.3s ease; /* Added transition for logo */
 }
+
+.header .logo img:hover {
+    transform: scale(1.1); /* Scale effect on logo hover */
+}
+
 
 .header .navbar {
   display: flex;
@@ -299,14 +347,34 @@ button:hover {
 }
 
 .header .navbar a {
-  margin: 0 1rem;
-  font-size: 1.6rem;
-  color: var(--text-color);
+    margin: 0 1rem;
+    font-size: 1.6rem;
+    color: var(--text-color); /* Using the variable for text color */
+    transition: color 0.3s ease; /* Added transition for smooth color change */
 }
 
 .header .navbar a:hover {
-  color: var(--text-color);
+    color: var(--main-color); /* Change to main color on hover */
+    text-shadow: 0 0 5px #fff; /* Added text shadow effect on hover */
 }
+
+
+.header .navbar a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -5px; /* Position below text */
+    width: 0;
+    height: 2px;
+    background: var(--main-color);
+    transition: width 0.3s ease, left 0.3s ease; /* Smooth transition for underline */
+}
+
+.header .navbar a:hover::after {
+    width: 100%; /* Extend underline on hover */
+    left: 0; /* Reset left position */
+}
+
 
 .header .icons {
   display: flex;
@@ -314,36 +382,36 @@ button:hover {
 }
 
 .header .icons div {
-  background-color: var(--background-color);
-  cursor: pointer;
-  font-size: 2.5rem;
-  margin-left: 2rem;
+    color: #fff; /* Default color */
+    background-color: var(--background-color); /* Added background color */
+    cursor: pointer;
+    font-size: 2.5rem;
+    margin-left: 2rem;
+    transition: transform 0.3s ease; /* Added transition for smooth scaling */
 }
 
 .header .icons div:hover {
-  color: var(--text-color);
+    color: var(--main-color); /* Change color on hover */
+    transform: scale(1.2); /* Scale effect on hover */
 }
+
 
 /*#menu-btn {
     display: none;
 }*/
 
 .header .search-form {
-  position: absolute;
-  top: calc(100% + 1rem);
-  /* Adjusted to position below header */
-  right: 7%;
-  background-color: var(--background-color);
-  width: 20rem;
-  /* Adjusted width for better fit */
-  height: auto;
-  display: none;
-  /* Initially hidden */
-  padding: 1rem;
-  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
-  /* Added box shadow */
-  z-index: 100;
-  /* Ensure it's above other content */
+    position: absolute;
+    top: calc(100% + 1rem); /* Adjusted to position below header */
+    right: 7%;
+    background-color: var(--background-color); /* Using variable for background color */
+    width: 20rem; /* Adjusted width for better fit */
+    height: auto;
+    display: none; /* Initially hidden */
+    padding: 1rem;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1); /* Added box shadow */
+    z-index: 100; /* Ensure it's above other content */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Added transition */
 }
 
 .header .search-form.active {
@@ -369,26 +437,21 @@ button:hover {
 }
 
 .header .search-form label:hover {
-  color: var(--text-color);
+    color: var(--text-color); /* Using variable for text color */
 }
 
 .header .cart-items-container {
-  position: absolute;
-  top: calc(100% + 1rem);
-  /* Adjusted to position below header */
-  right: 7%;
-  height: auto;
-  width: 400px;
-  /* Adjusted width for better fit */
-  background-color: var(--background-color);
-  display: none;
-  /* Initially hidden */
-  padding: 1rem;
-  background-color: var(--background-color);
-  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
-  /* Added box shadow */
-  z-index: 100;
-  /* Ensure it's above other content */
+    position: absolute;
+    top: calc(100% + 1rem); /* Adjusted to position below header */
+    right: 7%;
+    height: auto;
+    width: 400px; /* Adjusted width for better fit */
+    background-color: var(--background-color); /* Using variable for background color */
+    display: none; /* Initially hidden */
+    padding: 1rem;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1); /* Added box shadow */
+    z-index: 100; /* Ensure it's above other content */
+    transition: all 0.3s ease; /* Added transition */
 }
 
 .header .cart-items-container.active {

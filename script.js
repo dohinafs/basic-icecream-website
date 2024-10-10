@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Animated button functionality
-    if (animatedButton) {
+    if (animate-dButton) {
         animatedButton.addEventListener('mouseenter', handleButtonMouseEffect);
         animatedButton.addEventListener('mouseleave', handleButtonMouseEffect);
     }
@@ -462,8 +462,8 @@ document.addEventListener('DOMContentLoaded', function() {
     checkScroll(); 
 });
 
-
 document.addEventListener('DOMContentLoaded', () => {
+    // Modal Elements
     let loginModal = document.getElementById('login-modal');
     let signupModal = document.getElementById('signup-modal');
     let loginBtn = document.getElementById('login-btn');
@@ -487,7 +487,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close login modal
     closeLogin.onclick = () => {
-          resetLoginForm();
+        resetLoginForm();
         loginModal.style.display = 'none';
     };
 
@@ -495,10 +495,11 @@ document.addEventListener('DOMContentLoaded', () => {
     closeSignup.onclick = () => {
         signupModal.style.display = 'none';
     };
+
     function resetLoginForm() {
         emailInput.value = '';   
         passwordInput.value = '';   
-      }
+    }
 
     // Close modal if clicked outside the modal content
     window.onclick = (event) => {
@@ -508,20 +509,39 @@ document.addEventListener('DOMContentLoaded', () => {
             signupModal.style.display = 'none';
         }
     };
-});
 
-window.onscroll = function () {
-    const button = document.getElementById('backToTop');
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        button.style.display = "block";
-    } else {
-        button.style.display = "none"; 
+    // Scroll functionality for sections visibility
+    const sections = document.querySelectorAll('section');
+
+    function checkScroll() {
+        const triggerBottom = window.innerHeight / 5 * 4;
+
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+
+            if (sectionTop < triggerBottom) {
+                section.classList.add('visible');  // Add 'visible' class when section is in view
+            }
+        });
     }
-};
 
-document.getElementById('backToTop').onclick = function () {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-};
+    window.addEventListener('scroll', checkScroll);
+    checkScroll();  // Trigger the check once on page load
+
+    // Back to top button functionality
+    const button = document.getElementById('backToTop');
+    window.onscroll = function () {
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            button.style.display = "block";
+        } else {
+            button.style.display = "none"; 
+        }
+    };
+
+    button.onclick = function () {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+});
