@@ -477,7 +477,24 @@ document.addEventListener('DOMContentLoaded', () => {
             signupModal.style.display = 'none';
         }
     };
+// for making responsive search bar
+document.getElementById('search-box').addEventListener('input', function () {
+    const searchTerm = this.value.toLowerCase();
+    const menuItems = document.querySelectorAll('.menu .box');
+
+    menuItems.forEach(item => {
+        const itemName = item.querySelector('h3').textContent.toLowerCase();
+        
+        // Check if the search term is in the item name
+        if (itemName.includes(searchTerm)) {
+            item.style.display = '';  // Show the item if it matches
+        } else {
+            item.style.display = 'none';  // Hide the item if it doesn't match
+        }
+    });
 });
+
+=======
 
 window.onscroll = function () {
     const button = document.getElementById('backToTop');
@@ -494,3 +511,4 @@ document.getElementById('backToTop').onclick = function () {
         behavior: 'smooth'
     });
 };
+
